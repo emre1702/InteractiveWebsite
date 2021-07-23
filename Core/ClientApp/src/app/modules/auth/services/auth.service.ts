@@ -15,8 +15,8 @@ import { mergeMap, tap } from 'rxjs/operators';
 export class AuthService {
     user: AuthUser;
 
-    private registerRrrors = new Subject<string[]>();
-    registerErrors$ = this.registerRrrors.asObservable();
+    private registerErrors = new Subject<string[]>();
+    registerErrors$ = this.registerErrors.asObservable();
 
     constructor(private readonly httpClient: HttpClient) {}
 
@@ -26,6 +26,10 @@ export class AuthService {
 
     register(data: RegisterLoginData): Observable<RegisterResult | LoginResult> {
         return this.httpClient.post<RegisterResult>(authRoutes.post.register, data).pipe(mergeMap((result) => this.onRegister(data, result)));
+    }
+
+    isLoggedIn() {
+        return !!this.user;
     }
 
     checkIsLoggedIn(): Observable<LoginResult | undefined> {
@@ -48,7 +52,7 @@ export class AuthService {
         if (result.succeeded) {
             //Todo: Add email confirmation on internal register (this one here)
             return this.login(data);
-        } else this.registerRrrors.next(result.errors ?? []);
+        } else this.registerErrors.next(result.errors ?? []);
         return of(result);
     }
 }

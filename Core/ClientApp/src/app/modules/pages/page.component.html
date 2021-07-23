@@ -1,0 +1,10 @@
+<div class="d-flex flex-row w-100">
+    <mat-nav-list class="me-3" *ngIf="authService.isLoggedIn">
+        <ng-container *ngFor="let page of pages">
+            <mat-list-item [routerLink]="page.route">{{ page.text }} </mat-list-item>
+        </ng-container>
+    </mat-nav-list>
+    <div class="flex-grow-1">
+        <router-outlet></router-outlet>
+    </div>
+</div>

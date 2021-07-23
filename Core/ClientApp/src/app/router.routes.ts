@@ -1,7 +1,7 @@
 export default {
-    home: '**',
+    home: 'home',
     auth: {
-        login: 'authentication/login',
-        register: 'authentication/register',
+        login: 'auth/login',
+        register: 'auth/register',
     },
 };
