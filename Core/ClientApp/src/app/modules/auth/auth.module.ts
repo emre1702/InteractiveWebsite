@@ -15,30 +15,10 @@ import { RegisterFormComponent } from './components/register/register-form/regis
         CommonModule,
         FormsModule,
         MaterialModule,
-        // SocialLoginModule,
         RouterModule.forChild([
             { path: routerRoutes.auth.login, component: LoginComponent },
             { path: routerRoutes.auth.register, component: RegisterComponent },
         ]),
     ],
-    /*providers: [
-        {
-            provide: 'SocialAuthServiceConfig',
-            useValue: {
-                //Todo: Check this
-                autoLogin: false,
-                providers: [
-                    {
-                        id: GoogleLoginProvider.PROVIDER_ID,
-                        provider: new GoogleLoginProvider(environment.cliendIds.google, { scope: 'email' }),
-                    },
-                    {
-                        id: FacebookLoginProvider.PROVIDER_ID,
-                        provider: new FacebookLoginProvider(environment.cliendIds.facebook, { scope: 'email' }),
-                    },
-                ],
-            } as SocialAuthServiceConfig,
-        },
-    ],*/
 })
 export class AuthModule {}
