@@ -23,6 +23,7 @@ export class RegisterFormComponent {
     });
 
     showPassword: boolean;
+    showConfirmPassword: boolean;
     isSubmiting: boolean;
 
     constructor(private readonly router: Router, private readonly activatedRoute: ActivatedRoute, private readonly authService: AuthService) {}
@@ -44,6 +45,11 @@ export class RegisterFormComponent {
     toggleShowPassword(event: MouseEvent) {
         event.stopPropagation();
         this.showPassword = !this.showPassword;
+    }
+
+    toggleShowConfirmPassword(event: MouseEvent) {
+        event.stopPropagation();
+        this.showConfirmPassword = !this.showConfirmPassword;
     }
 
     isPasswordConfirmed(): boolean {
