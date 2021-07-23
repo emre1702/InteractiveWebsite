@@ -7,6 +7,6 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent {
     constructor(titleService: Title) {
-        titleService.setTitle($localize`Member Userpanel`);
+        titleService.setTitle($localize`Interactive Website`);
     }
 }

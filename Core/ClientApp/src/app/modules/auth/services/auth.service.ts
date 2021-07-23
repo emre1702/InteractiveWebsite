@@ -6,7 +6,7 @@ import { AuthUser } from '../models/auth-user';
 import { LoginResult } from '../models/login-result';
 import { RegisterLoginData } from '../models/register-login-data';
 import { RegisterResult } from '../models/register-result';
-import authRoutes from '../routes/auth.routes';
+import authRoutes from '../auth.routes';
 import { mergeMap, tap } from 'rxjs/operators';
 
 @Injectable({

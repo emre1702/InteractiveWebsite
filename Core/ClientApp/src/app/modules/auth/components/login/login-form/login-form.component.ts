@@ -1,5 +1,4 @@
-import { HttpClient, HttpStatusCode } from '@angular/common/http';
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
@@ -7,9 +6,7 @@ import routerRoutes from 'src/app/router.routes';
 import { ExternalProvider } from '../../../enums/external-provider';
 import { LoginResultStatus } from '../../../enums/login-result-status';
 import { getReturnUrl } from '../../../helpers/url.helper';
-import { AuthUser } from '../../../models/auth-user';
 import { RegisterLoginData } from '../../../models/register-login-data';
-import authRoutes from '../../../routes/auth.routes';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
