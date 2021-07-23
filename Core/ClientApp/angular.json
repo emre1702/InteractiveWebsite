@@ -154,5 +154,8 @@
             }
         }
     },
-    "defaultProject": "InteractiveWebsite"
+    "defaultProject": "InteractiveWebsite",
+    "cli": {
+        "defaultCollection": "@ngrx/schematics"
+    }
 }
