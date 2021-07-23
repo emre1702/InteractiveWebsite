@@ -15,8 +15,8 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label i18n>Confirm Password</mat-label>
-            <input [type]="showPassword ? 'text' : 'password'" matInput formControlName="confirmPassword" />
-            <mat-icon class="user-select-none" matSuffix (click)="toggleShowPassword($event)">{{ showPassword ? 'lock_open' : 'lock' }}</mat-icon>
+            <input [type]="showConfirmPassword ? 'text' : 'password'" matInput formControlName="confirmPassword" />
+            <mat-icon class="user-select-none" matSuffix (click)="toggleShowConfirmPassword($event)">{{ showConfirmPassword ? 'lock_open' : 'lock' }}</mat-icon>
         </mat-form-field>
         <button color="primary" mat-flat-button class="mt-2" (click)="submit()" [disabled]="formGroup.invalid || isSubmiting || !isPasswordConfirmed()" i18n>
             Register
