@@ -1,0 +1,28 @@
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.text-prewrap {
+    white-space: pre-wrap;
+}
+
+.w-fit-content {
+    width: fit-content !important;
+}
+
+a {
+    color: #0366d6;
+}
+
+.w-40 {
+    width: 40% !important;
+}
+
+.overflow-x-auto {
+    overflow-x: auto !important;
+}

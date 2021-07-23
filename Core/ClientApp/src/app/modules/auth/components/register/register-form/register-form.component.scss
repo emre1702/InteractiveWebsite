@@ -1,0 +1,17 @@
+:host {
+    display: block;
+
+    .register-icon {
+        font-size: 4rem;
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .title {
+        font-size: 200%;
+    }
+
+    .gray-background {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+}

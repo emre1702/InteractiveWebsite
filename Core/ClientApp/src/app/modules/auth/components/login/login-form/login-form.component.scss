@@ -1,0 +1,44 @@
+:host {
+    display: block;
+
+    .account-icon {
+        font-size: 4rem;
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .title {
+        font-size: 200%;
+    }
+
+    .gray-background {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .external-provider-button {
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 50%;
+        padding-top: 11.4%;
+
+        &.google {
+            background-image: url('~src/assets/authorization/google/normal.png');
+
+            &:hover {
+                background-image: url('~src/assets/authorization/google/focused.png');
+            }
+
+            &:disabled {
+                background-image: url('~src/assets/authorization/google/disabled.png');
+            }
+
+            &:active {
+                background-image: url('~src/assets/authorization/google/pressed.png');
+            }
+        }
+
+        &.facebook {
+            background-image: url('~src/assets/authorization/facebook/normal.png');
+        }
+    }
+}

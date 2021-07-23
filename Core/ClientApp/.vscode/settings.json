@@ -1,0 +1,6 @@
+{
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "xliffSync.fileType": "xlf2",
+    "xliffSync.baseFile": "messages.xlf",
+    "html-css-class-completion.includeGlobPattern": "**/*.{css,scss,html}"
+}

@@ -1,0 +1,38 @@
+<div class="d-flex flex-column justify-content-between" [formGroup]="formGroup">
+    <mat-icon class="align-self-center mt-3 account-icon user-select-none">person_outline</mat-icon>
+    <h1 class="title align-self-center mt-1 user-select-none" i18n>Sign In</h1>
+
+    <div class="d-flex flex-column w-100 px-5 mt-1">
+        <mat-form-field appearance="fill">
+            <mat-label i18n>E-Mail</mat-label>
+            <input matInput formControlName="email" autocomplete="email" />
+            <mat-icon class="user-select-none" matSuffix>email</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label i18n>Password</mat-label>
+            <input [type]="showPassword ? 'text' : 'password'" matInput formControlName="password" autocomplete="current-password" />
+            <mat-icon class="user-select-none" matSuffix (click)="toggleShowPassword($event)">{{ showPassword ? 'lock_open' : 'lock' }}</mat-icon>
+        </mat-form-field>
+        <mat-checkbox class="mb-3" formControlName="rememberMe" i18n>Remember me</mat-checkbox>
+        <!--<div class="d-flex flex-wrap flex-row">
+            <button
+                mat-flat-button
+                class="external-provider-button google"
+                (click)="loginExternal(externalProviderEnum.Google)"
+                [disabled]="isSubmiting"
+            ></button>
+            <button
+                mat-flat-button
+                class="external-provider-button facebook"
+                (click)="loginExternal(externalProviderEnum.Facebook)"
+                [disabled]="isSubmiting"
+            ></button>
+        </div>-->
+
+        <button color="primary" mat-flat-button class="mt-5" i18n (click)="submit()" [disabled]="formGroup.invalid || isSubmiting">Login</button>
+    </div>
+
+    <div class="mt-5 p-3 gray-background text-center">
+        <span i18n>Not a member? <button mat-button color="primary" [disabled]="isSubmiting" (click)="switchToRegister()">Create account</button></span>
+    </div>
+</div>

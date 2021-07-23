@@ -1,0 +1,29 @@
+<div class="d-flex flex-column justify-content-between" [formGroup]="formGroup">
+    <mat-icon class="align-self-center mt-3 register-icon user-select-none">person_add_alt</mat-icon>
+    <h1 class="title align-self-center mt-1 user-select-none" i18n>Create Account</h1>
+
+    <div class="d-flex flex-column w-100 px-5 mt-1">
+        <mat-form-field appearance="fill">
+            <mat-label i18n>E-Mail</mat-label>
+            <input matInput formControlName="email" autocomplete="email" />
+            <mat-icon class="user-select-none" matSuffix>email</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label i18n>Password</mat-label>
+            <input [type]="showPassword ? 'text' : 'password'" matInput formControlName="password" />
+            <mat-icon class="user-select-none" matSuffix (click)="toggleShowPassword($event)">{{ showPassword ? 'lock_open' : 'lock' }}</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label i18n>Confirm Password</mat-label>
+            <input [type]="showPassword ? 'text' : 'password'" matInput formControlName="confirmPassword" />
+            <mat-icon class="user-select-none" matSuffix (click)="toggleShowPassword($event)">{{ showPassword ? 'lock_open' : 'lock' }}</mat-icon>
+        </mat-form-field>
+        <button color="primary" mat-flat-button class="mt-2" (click)="submit()" [disabled]="formGroup.invalid || isSubmiting || !isPasswordConfirmed()" i18n>
+            Register
+        </button>
+    </div>
+
+    <div class="mt-5 p-3 gray-background text-center">
+        <span i18n>Already a member? <button mat-button color="primary" [disabled]="isSubmiting" (click)="switchToLogin()">Sign In</button></span>
+    </div>
+</div>

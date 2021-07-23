@@ -1,0 +1,8 @@
+<app-register-form class="m-auto mt-5 w-40 border-1 mat-elevation-z8"></app-register-form>
+
+<div *ngIf="authService.registerErrors$ | async as errors">
+    <h3 i18n>Errors:</h3>
+    <p *ngFor="let error of errors" class="text-danger">
+        {{ error }}
+    </p>
+</div>
