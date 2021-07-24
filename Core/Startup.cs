@@ -1,9 +1,10 @@
-using Database;
 using InteractiveWebsite.Core.Services;
+using InteractiveWebsite.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
@@ -62,7 +63,10 @@ namespace InteractiveWebsite.Core
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.WithAppServices(_configuration, _environment.IsDevelopment());
+            services
+                .WithAppServices(_configuration, _environment.IsDevelopment())
+                .AddAutoMapper(typeof(AutoMapper.Core).Assembly);
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
