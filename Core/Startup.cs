@@ -16,6 +16,7 @@ using NLog;
 using NLog.Web;
 using System.Text.Json;
 
+[assembly: ApiController]
 namespace InteractiveWebsite.Core
 {
     public class Startup
