@@ -5,7 +5,7 @@ namespace InteractiveWebsite.Core.Services
 {
     internal static class ServicesInitialization
     {
-        public static void WithAppServices(this IServiceCollection serviceCollection, IConfiguration configuration, bool isDevelopment)
+        public static IServiceCollection WithAppServices(this IServiceCollection serviceCollection, IConfiguration configuration, bool isDevelopment)
             => serviceCollection.WithAuthenticationServices(configuration, isDevelopment);
     }
 }
