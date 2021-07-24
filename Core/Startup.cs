@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog;
 using NLog.Web;
+using System.Text.Json;
 
 namespace InteractiveWebsite.Core
 {
@@ -48,6 +49,11 @@ namespace InteractiveWebsite.Core
             services.AddControllersWithViews(config =>
             {
                 config.Filters.Add(new AuthorizeFilter());
+            })
+            .AddJsonOptions(options => 
+            {
+                options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
             });
             services.AddRazorPages();
 
