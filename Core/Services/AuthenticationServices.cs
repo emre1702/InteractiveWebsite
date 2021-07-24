@@ -1,7 +1,7 @@
 ﻿using Database;
 using InteractiveWebsite.Common;
-using InteractiveWebsite.Common.Entities.Authentication;
 using InteractiveWebsite.Common.Interfaces.Authentication;
+using InteractiveWebsite.Database.Entities;
 using InteractiveWebsite.Services.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;

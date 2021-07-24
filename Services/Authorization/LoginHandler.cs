@@ -1,7 +1,7 @@
 ﻿using InteractiveWebsite.Common.Classes.Authentication;
-using InteractiveWebsite.Common.Entities.Authentication;
 using InteractiveWebsite.Common.Enums;
 using InteractiveWebsite.Common.Interfaces.Authentication;
+using InteractiveWebsite.Database.Entities;
 using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

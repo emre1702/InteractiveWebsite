@@ -1,4 +1,4 @@
-﻿using InteractiveWebsite.Common.Entities.Authentication;
+﻿using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
@@ -10,9 +10,9 @@ namespace InteractiveWebsite.Common.Classes.Authentication
         public IEnumerable<string>? Errors { get; set; }
 
         [JsonIgnore]
-        public AppUser User { get; set; }
+        public IdentityUser User { get; set; }
 
-        public RegisterResult(bool succeeded, IEnumerable<string>? errors, AppUser user)
+        public RegisterResult(bool succeeded, IEnumerable<string>? errors, IdentityUser user)
         {
             Succeeded = succeeded;
             Errors = errors;
