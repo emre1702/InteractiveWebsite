@@ -1,11 +1,11 @@
 export default {
     get: {
-        checkIsLoggedIn: 'Authentication/CheckIsLoggedIn',
+        checkIsLoggedIn: 'api/Authentication/CheckIsLoggedIn',
     },
     post: {
-        login: 'Authentication/Login',
-        logout: 'Authentication/Logout',
-        register: 'Authentication/Register',
-        loginOrRegisterExternal: 'Authentication/loginOrRegisterExternal',
+        login: 'api/Authentication/Login',
+        logout: 'api/Authentication/Logout',
+        register: 'api/Authentication/Register',
+        loginOrRegisterExternal: 'api/Authentication/loginOrRegisterExternal',
     },
 };

@@ -8,12 +8,16 @@ import { AuthGuard } from '../auth/guards/auth.guard';
 import { MaterialModule } from '../material/material.module';
 import { HomeComponent } from './home/components/home/home.component';
 import { HomeModule } from './home/home.module';
+import { NewsComponent } from './news/components/news/news.component';
+import { NewsModule } from './news/news.module';
 import { PageComponent } from './page.component';
 
 @NgModule({
     declarations: [PageComponent],
     imports: [
         HomeModule,
+        NewsModule,
+
         AuthModule,
         MaterialModule,
         RouterModule.forRoot([
@@ -21,6 +25,7 @@ import { PageComponent } from './page.component';
             { path: routerRoutes.auth.register, component: RegisterComponent },
 
             { path: routerRoutes.home, component: HomeComponent, canActivate: [AuthGuard] },
+            { path: routerRoutes.news, component: NewsComponent, canActivate: [AuthGuard] },
 
             { path: '**', redirectTo: routerRoutes.home },
         ]),

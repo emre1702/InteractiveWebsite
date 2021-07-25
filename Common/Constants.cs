@@ -15,5 +15,7 @@ namespace InteractiveWebsite.Common
 
         public static Func<string, string> AuthClientIdConfigIndex { get; } = (schema) => $"Authentication:{schema}:ClientId";
         public static Func<string, string> AuthClientSecretConfigIndex { get; } = (schema) => $"Authentication:{schema}:ClientSecret";
+
+        public const int MaxNewsPerPage = 10;
     }
 }
