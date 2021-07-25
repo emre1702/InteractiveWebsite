@@ -111,7 +111,7 @@ namespace InteractiveWebsite.Core
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{language}/{controller}/{action=Index}/{id?}")
+                    pattern: "{language}/api/{controller}/{action=Index}/{id?}")
                     .RequireAuthorization();
                 endpoints.MapRazorPages().RequireAuthorization();
             });
