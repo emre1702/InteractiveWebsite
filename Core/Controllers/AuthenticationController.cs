@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace InteractiveWebsite.Core.Controllers
 {
-    [Route("{language}/[controller]")]
-    public class AuthenticationController : Controller
+    public class AuthenticationController : CustomControllerBase
     {
 
         private readonly IRegisterHandler _registerHandler;
