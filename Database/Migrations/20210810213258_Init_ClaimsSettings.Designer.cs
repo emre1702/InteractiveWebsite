@@ -3,15 +3,17 @@ using System;
 using InteractiveWebsite.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace InteractiveWebsite.Database.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210810213258_Init_ClaimsSettings")]
+    partial class Init_ClaimsSettings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,13 +96,6 @@ namespace InteractiveWebsite.Database.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ClaimsSettings");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "Home",
-                            MinLevel = 0
-                        });
                 });
 
             modelBuilder.Entity("InteractiveWebsite.Database.Entities.News", b =>

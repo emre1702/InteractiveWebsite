@@ -1,4 +1,5 @@
 ﻿using InteractiveWebsite.Database.Entities;
+using InteractiveWebsite.Database.Seeds;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +8,7 @@ namespace InteractiveWebsite.Database
     public class AppDbContext : IdentityDbContext<AppUser>
     {
         #nullable disable
+        public virtual DbSet<ClaimsSettings> ClaimsSettings { get; set; }
         public virtual DbSet<News> News { get; set; }
 
         #nullable restore
@@ -18,6 +20,7 @@ namespace InteractiveWebsite.Database
             base.OnModelCreating(builder);
 
             builder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+            builder.HasSeeds();
         }
     }
 }
