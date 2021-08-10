@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { LoginResultStatus } from '../enums/login-result-status';
 import { AuthUser } from '../models/auth-user';
 import { LoginResult } from '../models/login-result';
@@ -17,6 +17,9 @@ export class AuthService {
 
     private registerErrors = new Subject<string[]>();
     registerErrors$ = this.registerErrors.asObservable();
+
+    private loggedInStatusChange = new ReplaySubject<boolean>();
+    loggedInStatusChange$ = this.loggedInStatusChange.asObservable();
 
     constructor(private readonly httpClient: HttpClient) {}
 
@@ -36,16 +39,27 @@ export class AuthService {
         return this.httpClient.get<LoginResult>(authRoutes.get.checkIsLoggedIn).pipe(tap((result) => this.onLogIn(result)));
     }
 
+    logout(): Observable<unknown> {
+        return this.httpClient.post(authRoutes.post.logout, {}).pipe(tap(() => this.onLogOut()));
+    }
+
     private onLogIn(result: LoginResult) {
         switch (result.status) {
             case LoginResultStatus.Succeeded:
                 this.user = { token: result.token };
+                this.loggedInStatusChange.next(true);
                 break;
             case LoginResultStatus.NotAllowed:
+            case LoginResultStatus.NoAccount:
                 break;
             default:
                 throw new Error(`OnLogIn status ${LoginResultStatus[result.status]} not implemented.`);
         }
+    }
+
+    private onLogOut() {
+        this.user = undefined;
+        this.loggedInStatusChange.next(false);
     }
 
     private onRegister(data: RegisterLoginData, result: RegisterResult): Observable<RegisterResult | LoginResult> {
