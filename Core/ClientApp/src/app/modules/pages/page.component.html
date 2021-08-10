@@ -1,6 +1,10 @@
-<div class="d-flex flex-row w-100">
-    <mat-nav-list class="me-3" *ngIf="authService.isLoggedIn()">
-        <mat-list-item *ngFor="let page of pages" [routerLink]="page.route">{{ page.text }} </mat-list-item>
+<div class="d-flex flex-row w-100 h-100">
+    <mat-nav-list class="d-flex flex-column me-3" *ngIf="authService.isLoggedIn()">
+        <ng-container *ngFor="let navigation of facade.navigations$ | async">
+            <mat-list-item *ngIf="navigations[navigation] as navData" [routerLink]="navData.route">{{ navData.text }} </mat-list-item>
+        </ng-container>
+
+        <mat-list-item class="mt-auto" (click)="logout()" [disabled]="isSubmiting" i18n>Logout</mat-list-item>
     </mat-nav-list>
     <div class="flex-grow-1">
         <router-outlet></router-outlet>

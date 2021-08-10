@@ -4,5 +4,6 @@ export default {
         register: 'auth/register',
     },
     home: 'home',
+    members: 'members',
     news: 'news',
 };

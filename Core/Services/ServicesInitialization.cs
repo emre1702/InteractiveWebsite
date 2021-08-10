@@ -7,7 +7,8 @@ namespace InteractiveWebsite.Core.Services
     {
         public static IServiceCollection WithAppServices(this IServiceCollection serviceCollection, IConfiguration configuration, bool isDevelopment)
             => serviceCollection
-                .WithAuthenticationServices(configuration, isDevelopment)
-                .WithInformationServices();
+                .WithAuthorizationServices(configuration, isDevelopment)
+                .WithInformationServices()
+                .WithPagesServices();
     }
 }

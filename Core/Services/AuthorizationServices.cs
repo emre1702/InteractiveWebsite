@@ -1,5 +1,5 @@
 ﻿using InteractiveWebsite.Common;
-using InteractiveWebsite.Common.Interfaces.Authentication;
+using InteractiveWebsite.Common.Interfaces.Authorization;
 using InteractiveWebsite.Database;
 using InteractiveWebsite.Database.Entities;
 using InteractiveWebsite.Services.Authorization;
@@ -13,16 +13,17 @@ using System.Text;
 
 namespace InteractiveWebsite.Core.Services
 {
-    internal static class AuthenticationServices
+    internal static class AuthorizationServices
     {
-        public static IServiceCollection WithAuthenticationServices(this IServiceCollection serviceCollection, IConfiguration configuration, bool isDevelopment)
+        public static IServiceCollection WithAuthorizationServices(this IServiceCollection serviceCollection, IConfiguration configuration, bool isDevelopment)
             => serviceCollection
                 .WithIdentityOptions(isDevelopment)
                 .WithProviders(configuration)
                 .WithIdentity()
                 .AddSingleton<IJwtHandler, JwtHandler>()
                 .AddScoped<IRegisterHandler, RegisterHandler>()
-                .AddScoped<ILoginHandler, LoginHandler>();
+                .AddScoped<ILoginHandler, LoginHandler>()
+                .AddScoped<IAuthorizedService, AuthorizedService>();
 
         private static IServiceCollection WithIdentityOptions(this IServiceCollection serviceCollection, bool isDevelopment)
             => serviceCollection.Configure<IdentityOptions>(options =>

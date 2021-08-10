@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import pages from './modules/pages/pages';
+import pages from './modules/pages/navigations';
 
 @Component({
     selector: 'app-root',
