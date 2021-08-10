@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import routerRoutes from 'src/app/router.routes';
@@ -27,7 +28,12 @@ export class LoginFormComponent {
     isSubmiting: boolean;
     externalProviderEnum = ExternalProvider;
 
-    constructor(private readonly router: Router, private readonly activatedRoute: ActivatedRoute, private readonly authService: AuthService) {}
+    constructor(
+        private readonly router: Router,
+        private readonly activatedRoute: ActivatedRoute,
+        private readonly authService: AuthService,
+        private readonly snackBar: MatSnackBar,
+    ) {}
 
     submit() {
         this.isSubmiting = true;
@@ -37,6 +43,8 @@ export class LoginFormComponent {
             .subscribe((result) => {
                 if (result.status === LoginResultStatus.Succeeded) {
                     this.router.navigateByUrl(getReturnUrl(this.activatedRoute), { replaceUrl: true });
+                } else {
+                    this.snackBar.open(this.getErrorMessage(result.status), $localize`OK`);
                 }
             });
     }
@@ -53,5 +61,12 @@ export class LoginFormComponent {
                 ['returnUrl']: getReturnUrl(this.activatedRoute),
             },
         });
+    }
+
+    private getErrorMessage(status: LoginResultStatus): string {
+        switch (status) {
+            case LoginResultStatus.NoAccount:
+                return $localize`This account does not exist.`;
+        }
     }
 }
