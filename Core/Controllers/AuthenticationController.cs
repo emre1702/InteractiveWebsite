@@ -1,5 +1,5 @@
 ﻿using InteractiveWebsite.Common.Classes.Authentication;
-using InteractiveWebsite.Common.Interfaces.Authentication;
+using InteractiveWebsite.Common.Interfaces.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -41,5 +41,13 @@ namespace InteractiveWebsite.Core.Controllers
             var result = await _loginHandler.CheckIsLoggedIn(User);
             return Ok(result);
         }
+
+        [HttpPost("Logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await _loginHandler.Logout(User);
+            return Ok();
+        }
+
     }
 }
