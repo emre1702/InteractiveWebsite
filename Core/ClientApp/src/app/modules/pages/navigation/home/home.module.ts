@@ -8,10 +8,11 @@ import { HomeService } from './services/home.service';
 import { EffectsModule } from '@ngrx/effects';
 import { HomeEffects } from './+state/home.effects';
 import { HomeFacade } from './+state/home.facade';
+import { MaterialModule } from 'src/app/modules/material/material.module';
 
 @NgModule({
     declarations: [HomeComponent],
-    imports: [CommonModule, StoreModule.forFeature(fromHome.featureKey, reducers), EffectsModule.forFeature([HomeEffects])],
+    imports: [CommonModule, MaterialModule, StoreModule.forFeature(fromHome.featureKey, reducers), EffectsModule.forFeature([HomeEffects])],
     providers: [HomeService, HomeFacade],
 })
 export class HomeModule {}
