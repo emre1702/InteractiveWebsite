@@ -9,5 +9,5 @@ export function getReturnUrl(activatedRoute: ActivatedRoute): string {
         // This is an extra check to prevent open redirects.
         throw new Error('Invalid return url. The return url needs to have the same origin as the current page.');
     }
-    return fromQuery || routerRoutes.auth.login;
+    return fromQuery || routerRoutes.home;
 }
