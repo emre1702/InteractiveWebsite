@@ -1,5 +1,5 @@
 ﻿using InteractiveWebsite.Common.Classes.Authentication;
-using InteractiveWebsite.Common.Interfaces.Authentication;
+using InteractiveWebsite.Common.Interfaces.Authorization;
 using InteractiveWebsite.Database.Entities;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;

@@ -1,6 +1,6 @@
 ﻿using InteractiveWebsite.Common.Classes.Authentication;
 using InteractiveWebsite.Common.Enums;
-using InteractiveWebsite.Common.Interfaces.Authentication;
+using InteractiveWebsite.Common.Interfaces.Authorization;
 using InteractiveWebsite.Database.Entities;
 using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;
@@ -31,6 +31,8 @@ namespace InteractiveWebsite.Services.Authorization
             if (signInResult.RequiresTwoFactor) return new(LoginResultStatus.RequiresTwoFactor);
 
             var user = await _userManager.FindByEmailAsync(data.Email)!;
+            if (user is null) return new(LoginResultStatus.NoAccount);
+
             return new(LoginResultStatus.Succeeded) { Token = GetToken(user) };
         }
 
@@ -56,6 +58,13 @@ namespace InteractiveWebsite.Services.Authorization
             var claims = _jwtHandler.GetClaims(user);
             var tokenOptions = _jwtHandler.GenerateTokenOptions(signingCredentials, claims);
             return new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+        }
+
+        public async Task Logout(ClaimsPrincipal claimsPrincipal)
+        {
+            if (!_signInManager.IsSignedIn(claimsPrincipal)) return;
+
+            await _signInManager.SignOutAsync();
         }
     }
 }

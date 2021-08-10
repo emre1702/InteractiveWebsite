@@ -1,5 +1,5 @@
 ﻿using InteractiveWebsite.Common;
-using InteractiveWebsite.Common.Interfaces.Authentication;
+using InteractiveWebsite.Common.Interfaces.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
