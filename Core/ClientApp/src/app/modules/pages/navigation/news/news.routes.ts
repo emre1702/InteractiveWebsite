@@ -1,5 +1,5 @@
 export default {
     post: {
-        news: 'api/NewsApi',
+        news: 'api/News',
     },
 };
