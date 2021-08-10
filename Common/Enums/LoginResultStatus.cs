@@ -5,6 +5,7 @@
         Lockout,
         NotAllowed,
         RequiresTwoFactor,
-        Succeeded
+        Succeeded,
+        NoAccount
     }
 }
