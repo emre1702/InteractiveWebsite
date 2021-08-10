@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
-namespace InteractiveWebsite.Common.Interfaces.Authentication
+namespace InteractiveWebsite.Common.Interfaces.Authorization
 {
     public interface IJwtHandler
     {
