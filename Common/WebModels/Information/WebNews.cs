@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace InteractiveWebsite.Common.Classes.Information
+namespace InteractiveWebsite.Common.WebModels.Information
 {
     public class WebNews
     {

@@ -1,4 +1,4 @@
-﻿using InteractiveWebsite.Common.Classes.Information;
+﻿using InteractiveWebsite.Common.WebModels.Information;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

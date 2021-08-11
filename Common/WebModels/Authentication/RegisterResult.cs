@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace InteractiveWebsite.Common.Classes.Authentication
+namespace InteractiveWebsite.Common.WebModels.Authentication
 {
     public class RegisterResult
     {

@@ -1,4 +1,4 @@
-﻿using InteractiveWebsite.Common.Classes.Authentication;
+﻿using InteractiveWebsite.Common.WebModels.Authentication;
 using System.Security.Claims;
 using System.Threading.Tasks;
 

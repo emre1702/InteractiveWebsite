@@ -1,4 +1,4 @@
-﻿namespace InteractiveWebsite.Common.Classes.Authentication
+﻿namespace InteractiveWebsite.Common.WebModels.Authentication
 {
     public class RegisterLoginData
     {

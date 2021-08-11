@@ -1,6 +1,6 @@
 ﻿using InteractiveWebsite.Common.Enums;
 
-namespace InteractiveWebsite.Common.Classes.Authentication
+namespace InteractiveWebsite.Common.WebModels.Authentication
 {
     public class LoginResult
     {
