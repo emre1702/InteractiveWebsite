@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace InteractiveWebsite.Core.Controllers
+namespace InteractiveWebsite.Core.Controllers.Authorization
 {
     public class AuthenticationController : CustomControllerBase
     {
