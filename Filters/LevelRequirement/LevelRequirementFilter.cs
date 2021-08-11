@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 
-namespace InteractiveWebsite.Core.Filters.LevelRequirement
+namespace InteractiveWebsite.Filters.LevelRequirement
 {
     public class LevelRequirementFilter : IAsyncAuthorizationFilter, IOrderedFilter
     {
