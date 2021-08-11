@@ -14,22 +14,20 @@ export class NavigationAuthGuard implements CanActivate {
 
     canActivate(next: ActivatedRouteSnapshot, _state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         const route = next.routeConfig.path;
-        console.log(route);
         if (route === routerRoutes.home) return true;
 
-        const key = Object.keys(navigations).find((n) => navigations[n].route === route) as unknown as number;
-        console.log(key);
+        const key = Number(Object.keys(navigations).find((n) => navigations[n].route === route));
         if (key == undefined) return false;
 
         return this.facade.navigations$.pipe(
             first(),
             map((allowedNavigations) => allowedNavigations.some((a) => a === key)),
-            tap((canNavigate) => this.handleAuthorization(canNavigate)),
+            tap((canNavigate) => this.handleResult(canNavigate)),
         );
     }
 
-    private handleAuthorization(isAuthenticated: boolean) {
-        if (!isAuthenticated) {
+    private handleResult(canNavigate: boolean) {
+        if (!canNavigate) {
             this.router.navigate(routerRoutes.home.split('/'));
         }
     }
