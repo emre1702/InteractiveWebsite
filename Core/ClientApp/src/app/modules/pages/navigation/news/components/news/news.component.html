@@ -1,3 +1,7 @@
-<input matInput [(ngModel)]="content" />
-<button mat-button [disabled]="!content" (click)="createNews()" i18n>Create News</button>
+<mat-form-field>
+    <input matInput [(ngModel)]="content" />
+    <mat-label i18n>News content</mat-label>
+</mat-form-field>
+
+<button mat-button [class.btn-success]="content" [disabled]="!content" (click)="createNews()" i18n>Create News</button>
 <p *ngIf="resultMessage">{{ resultMessage }}</p>
