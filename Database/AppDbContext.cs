@@ -1,7 +1,9 @@
-﻿using InteractiveWebsite.Database.Entities;
+﻿using InteractiveWebsite.Common.Enums;
+using InteractiveWebsite.Database.Entities;
 using InteractiveWebsite.Database.Seeds;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 namespace InteractiveWebsite.Database
 {
@@ -13,14 +15,21 @@ namespace InteractiveWebsite.Database
 
         #nullable restore
 
+        static AppDbContext()
+        {
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<NavigationItem>();
+        }
+
         public AppDbContext(DbContextOptions options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
-            builder.ApplyConfigurationsFromAssembly(GetType().Assembly);
-            builder.HasSeeds();
+            builder
+                .ApplyConfigurationsFromAssembly(GetType().Assembly)
+                .HasSeeds()
+                .HasPostgresEnum<NavigationItem>();
         }
     }
 }

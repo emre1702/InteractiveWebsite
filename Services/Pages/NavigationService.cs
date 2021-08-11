@@ -20,7 +20,7 @@ namespace InteractiveWebsite.Services.Pages
             foreach (var navigation in navigations)
             {
                 var navigationName = Enum.GetName(navigation)!;
-                if (await _authorizedService.IsAuthorized(user, navigationName))
+                if (await _authorizedService.IsAuthorized(user, navigation, navigationName))
                     yield return navigationName;
             }
         }

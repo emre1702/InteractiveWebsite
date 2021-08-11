@@ -13,7 +13,5 @@ namespace InteractiveWebsite.Common
         public static Func<string, string> AuthClientSecretConfigIndex { get; } = (schema) => $"Authentication:{schema}:ClientSecret";
 
         public const int MaxNewsPerPage = 10;
-
-        public static readonly Guid AdminClaimId = new("0503A0F0-47E0-4C67-8121-B0C9ADCA7EDE");
     }
 }

@@ -10,7 +10,7 @@ namespace InteractiveWebsite.Database.Seeds
         public static ModelBuilder HasClaimsSettings(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ClaimsSettings>().HasData(
-                new ClaimsSettings { Id = Enum.GetName(NavigationItem.Home), MinLevel = 0 }
+                new ClaimsSettings { Id = Enum.GetName(NavigationItem.Home), Navigation = NavigationItem.Home, MinLevel = 0 }
             );
 
             return modelBuilder;

@@ -6,12 +6,12 @@ namespace InteractiveWebsite.Core.Filters.LevelRequirement
 {
     public class LevelRequirementAttribute : TypeFilterAttribute
     {
-        public LevelRequirementAttribute(string claimId, string info) : base(typeof(LevelRequirementFilter))
+        public LevelRequirementAttribute(NavigationItem navigation, string claimId, string info) : base(typeof(LevelRequirementFilter))
         {
             Order = int.MinValue;
-            Arguments = new object[] { claimId, info };
+            Arguments = new object[] { navigation, claimId, info };
         }
 
-        public LevelRequirementAttribute(NavigationItem navigation, string info) : this(Enum.GetName(navigation)!, info) { }
+        public LevelRequirementAttribute(NavigationItem navigation, string info) : this(navigation, Enum.GetName(navigation)!, info) { }
     }
 }
