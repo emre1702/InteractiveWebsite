@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog;
 using NLog.Web;
+using Npgsql;
 using System.Text.Json;
 
 [assembly: ApiController]
@@ -130,8 +131,11 @@ namespace InteractiveWebsite.Core
         private void MigrateDatabase(IApplicationBuilder app)
         {
             using var scope = app.ApplicationServices.CreateScope();
-            using var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-            context.Database.Migrate();
+            using var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            dbContext.Database.Migrate();
+            var connection = (NpgsqlConnection)dbContext.Database.GetDbConnection();
+            connection.Open();
+            connection.ReloadTypes();
         }
     }
 }
