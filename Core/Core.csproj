@@ -30,9 +30,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AutoMapper\AutoMapper.csproj" />
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\Database\Database.csproj" />
+    <ProjectReference Include="..\Filters\Filters.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 

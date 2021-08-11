@@ -1,0 +1,35 @@
+<div class="d-flex flex-column" *ngIf="claimsSettings$ | async as claimsSettings">
+    <div class="d-flex flex-row align-items-center" *ngFor="let settings of claimsSettings">
+        <span class="me-5">{{ settings.info }}</span>
+        <mat-form-field appearance="standard">
+            <input
+                matInput
+                type="number"
+                min="0"
+                [max]="adminLevel"
+                [ngModel]="settings.minLevel === adminLevel ? '' : settings.minLevel"
+                (ngModelChange)="claimSettingsChanged(settings, $event)"
+                [disabled]="settings.minLevel === adminLevel"
+            />
+            <mat-label i18n>Required level</mat-label>
+        </mat-form-field>
+
+        <mat-checkbox
+            class="ms-3"
+            [checked]="settings.minLevel === adminLevel"
+            (change)="claimSettingsChanged(settings, settings.minLevel === adminLevel ? 0 : adminLevel)"
+            i18n
+            >Only admins</mat-checkbox
+        >
+    </div>
+    <button
+        mat-button
+        class="w-fit-content"
+        [class.btn-success]="changedClaimsSettings.length"
+        i18n
+        [disabled]="!changedClaimsSettings.length"
+        (click)="saveChangedClaimsSettings()"
+    >
+        Save
+    </button>
+</div>

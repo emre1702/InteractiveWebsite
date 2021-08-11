@@ -13,6 +13,8 @@ import { PagesEffects } from './+state/pages.effects';
 import { PagesFacade } from './+state/pages.facade';
 import { reducers } from './+state/pages.reducers';
 import { NavigationAuthGuard } from './guards/navigation-auth.guard';
+import { ClaimsSettingsModule } from './navigation/claims-settings/claims-settings.module';
+import { ClaimsSettingsComponent } from './navigation/claims-settings/components/claims-settings/claims-settings.component';
 import { HomeComponent } from './navigation/home/components/home/home.component';
 import { HomeModule } from './navigation/home/home.module';
 import { NewsComponent } from './navigation/news/components/news/news.component';
@@ -25,6 +27,8 @@ import { PagesService } from './services/pages.service';
     imports: [
         HomeModule,
         NewsModule,
+        ClaimsSettingsModule,
+
         EffectsModule.forFeature([PagesEffects]),
         StoreModule.forFeature(featureKey, reducers),
 
@@ -36,6 +40,7 @@ import { PagesService } from './services/pages.service';
 
             { path: routerRoutes.home, component: HomeComponent, canActivate: [NavigationAuthGuard, AuthGuard] },
             { path: routerRoutes.news, component: NewsComponent, canActivate: [NavigationAuthGuard, AuthGuard] },
+            { path: routerRoutes.claimsSettings, component: ClaimsSettingsComponent, canActivate: [NavigationAuthGuard, AuthGuard] },
 
             { path: '**', redirectTo: routerRoutes.home },
         ]),

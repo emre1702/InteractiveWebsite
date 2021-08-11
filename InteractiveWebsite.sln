@@ -11,7 +11,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "Database\Database.csproj", "{92A378B5-F2C6-4BE6-B3C2-4184FCBAE7A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMapper", "AutoMapper\AutoMapper.csproj", "{B50458C5-C37C-4DD5-B4E2-A730DB062939}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMapper", "AutoMapper\AutoMapper.csproj", "{B50458C5-C37C-4DD5-B4E2-A730DB062939}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filters", "Filters\Filters.csproj", "{03546DF4-286D-4A8D-8F58-8AD708D5646E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{98A225F6-50F0-446B-9A27-0693506E3CB1}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +46,10 @@ Global
 		{B50458C5-C37C-4DD5-B4E2-A730DB062939}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B50458C5-C37C-4DD5-B4E2-A730DB062939}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B50458C5-C37C-4DD5-B4E2-A730DB062939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03546DF4-286D-4A8D-8F58-8AD708D5646E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03546DF4-286D-4A8D-8F58-8AD708D5646E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03546DF4-286D-4A8D-8F58-8AD708D5646E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03546DF4-286D-4A8D-8F58-8AD708D5646E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

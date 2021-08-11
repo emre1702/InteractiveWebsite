@@ -1,3 +1,4 @@
+using InteractiveWebsite.Common.Interfaces.Settings;
 using InteractiveWebsite.Core.Services;
 using InteractiveWebsite.Database;
 using Microsoft.AspNetCore.Builder;
@@ -126,6 +127,8 @@ namespace InteractiveWebsite.Core
                     spa.UseAngularCliServer(npmScript: "startde");
                 }
             });
+
+            InitializeApp(app);
         }
 
         private void MigrateDatabase(IApplicationBuilder app)
@@ -136,6 +139,13 @@ namespace InteractiveWebsite.Core
             var connection = (NpgsqlConnection)dbContext.Database.GetDbConnection();
             connection.Open();
             connection.ReloadTypes();
+        }
+
+        private void InitializeApp(IApplicationBuilder app)
+        {
+            using var scope = app.ApplicationServices.CreateScope();
+            var possibleClaimsSettingsStorage = scope.ServiceProvider.GetRequiredService<IPossibleClaimsSettingsStorage>();
+            possibleClaimsSettingsStorage.InitialLoad();
         }
     }
 }

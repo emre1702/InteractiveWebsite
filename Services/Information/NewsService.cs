@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using InteractiveWebsite.Common;
-using InteractiveWebsite.Common.Classes.Information;
 using InteractiveWebsite.Common.Interfaces.Information;
+using InteractiveWebsite.Common.WebModels.Information;
 using InteractiveWebsite.Database;
 using InteractiveWebsite.Database.Entities;
 using Microsoft.EntityFrameworkCore;

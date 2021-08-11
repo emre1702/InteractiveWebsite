@@ -1,7 +1,7 @@
-﻿using InteractiveWebsite.Common.Classes.Information;
-using InteractiveWebsite.Common.Enums;
+﻿using InteractiveWebsite.Common.Enums;
 using InteractiveWebsite.Common.Interfaces.Information;
-using InteractiveWebsite.Core.Filters.LevelRequirement;
+using InteractiveWebsite.Common.WebModels.Information;
+using InteractiveWebsite.Filters.LevelRequirement;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -15,12 +15,12 @@ namespace InteractiveWebsite.Core.Controllers
 
         public NewsController(INewsService newsService) => _newsService = newsService;
 
-        [LevelRequirement(NavigationItem.News, "LoadNews", "Load news")]
+        [LevelRequirement("LoadNews", NavigationItem.News, "Load news")]
         [HttpGet]
         public Task<IEnumerable<WebNews>> LoadNews([FromQuery] int loadedLastNewsId = 0)
             => _newsService.Load(loadedLastNewsId);
 
-        [LevelRequirement(NavigationItem.News, "CreateNews", "Create news")]
+        [LevelRequirement("CreateNews", NavigationItem.News, "Create news")]
         [HttpPost]
         public async Task<IActionResult> CreateNews([FromBody] CreateNewsData createNewsData)
         {

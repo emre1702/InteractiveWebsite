@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using InteractiveWebsite.Common.Classes.Information;
+using InteractiveWebsite.Common.WebModels.Information;
 using InteractiveWebsite.Database.Entities;
 
 namespace InteractiveWebsite.AutoMapper.Profiles

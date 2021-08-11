@@ -9,6 +9,7 @@ namespace InteractiveWebsite.Core.Services
             => serviceCollection
                 .WithAuthorizationServices(configuration, isDevelopment)
                 .WithInformationServices()
-                .WithPagesServices();
+                .WithPagesServices()
+                .WithSettingsServices();
     }
 }

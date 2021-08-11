@@ -6,4 +6,5 @@ export default {
     home: 'home',
     members: 'members',
     news: 'news',
+    claimsSettings: 'claimsSettings',
 };

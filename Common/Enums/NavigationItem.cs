@@ -4,6 +4,7 @@
     {
         Home,
         Members,
-        News
+        News,
+        ClaimsSettings
     }
 }
