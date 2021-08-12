@@ -10,6 +10,7 @@ namespace InteractiveWebsite.Core.Services
                 .WithAuthorizationServices(configuration, isDevelopment)
                 .WithInformationServices()
                 .WithPagesServices()
-                .WithSettingsServices();
+                .WithSettingsServices()
+                .WithMembersServices();
     }
 }

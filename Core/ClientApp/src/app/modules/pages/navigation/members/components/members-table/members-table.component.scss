@@ -1,0 +1,16 @@
+:host {
+    display: block;
+
+    .table-container {
+        overflow: auto;
+
+        .mat-table {
+            width: 100%;
+
+            .mat-header-cell {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    }
+}

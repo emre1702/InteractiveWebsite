@@ -2,7 +2,7 @@
 
 namespace InteractiveWebsite.Common
 {
-    public class Constants
+    public static class Constants
     {
         public const string JwtSecurityKeyConfigIndex = "Authentication:Jwt:SecurityKey";
         public const string JwtValidIssuerConfigIndex = "Authentication:Jwt:ValidIssuer";
@@ -13,5 +13,6 @@ namespace InteractiveWebsite.Common
         public static Func<string, string> AuthClientSecretConfigIndex { get; } = (schema) => $"Authentication:{schema}:ClientSecret";
 
         public const int MaxNewsPerPage = 10;
+        public const int MaxMembersPerPage = 10;
     }
 }

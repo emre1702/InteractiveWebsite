@@ -21,6 +21,8 @@ import { NewsComponent } from './navigation/news/components/news/news.component'
 import { NewsModule } from './navigation/news/news.module';
 import { PageComponent } from './page.component';
 import { PagesService } from './services/pages.service';
+import { MembersModule } from './navigation/members/members.module';
+import { MembersMainComponent } from './navigation/members/components/main/members-main.component';
 
 @NgModule({
     declarations: [PageComponent],
@@ -28,6 +30,7 @@ import { PagesService } from './services/pages.service';
         HomeModule,
         NewsModule,
         ClaimsSettingsModule,
+        MembersModule,
 
         EffectsModule.forFeature([PagesEffects]),
         StoreModule.forFeature(featureKey, reducers),
@@ -40,6 +43,7 @@ import { PagesService } from './services/pages.service';
 
             { path: routerRoutes.home, component: HomeComponent, canActivate: [NavigationAuthGuard, AuthGuard] },
             { path: routerRoutes.news, component: NewsComponent, canActivate: [NavigationAuthGuard, AuthGuard] },
+            { path: routerRoutes.members, component: MembersMainComponent, canActivate: [NavigationAuthGuard, AuthGuard] },
             { path: routerRoutes.claimsSettings, component: ClaimsSettingsComponent, canActivate: [NavigationAuthGuard, AuthGuard] },
 
             { path: '**', redirectTo: routerRoutes.home },
