@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { LoginResultStatus } from '../enums/login-result-status';
@@ -8,6 +7,7 @@ import { RegisterLoginData } from '../models/register-login-data';
 import { RegisterResult } from '../models/register-result';
 import authRoutes from '../auth.routes';
 import { mergeMap, tap } from 'rxjs/operators';
+import { HttpService } from '../../shared/services/http.service';
 
 @Injectable({
     providedIn: 'root',
@@ -21,14 +21,14 @@ export class AuthService {
     private loggedInStatusChange = new ReplaySubject<boolean>();
     loggedInStatusChange$ = this.loggedInStatusChange.asObservable();
 
-    constructor(private readonly httpClient: HttpClient) {}
+    constructor(private readonly httpService: HttpService) {}
 
     login(data: RegisterLoginData): Observable<LoginResult> {
-        return this.httpClient.post<LoginResult>(authRoutes.post.login, data).pipe(tap((result) => this.onLogIn(result)));
+        return this.httpService.post<LoginResult>(authRoutes.post.login, data).pipe(tap((result) => this.onLogIn(result)));
     }
 
     register(data: RegisterLoginData): Observable<RegisterResult | LoginResult> {
-        return this.httpClient.post<RegisterResult>(authRoutes.post.register, data).pipe(mergeMap((result) => this.onRegister(data, result)));
+        return this.httpService.post<RegisterResult>(authRoutes.post.register, data).pipe(mergeMap((result) => this.onRegister(data, result)));
     }
 
     isLoggedIn() {
@@ -36,11 +36,11 @@ export class AuthService {
     }
 
     checkIsLoggedIn(): Observable<LoginResult | undefined> {
-        return this.httpClient.get<LoginResult>(authRoutes.get.checkIsLoggedIn).pipe(tap((result) => this.onLogIn(result)));
+        return this.httpService.get<LoginResult>(authRoutes.get.checkIsLoggedIn).pipe(tap((result) => this.onLogIn(result)));
     }
 
     logout(): Observable<unknown> {
-        return this.httpClient.post(authRoutes.post.logout, {}).pipe(tap(() => this.onLogOut()));
+        return this.httpService.post(authRoutes.post.logout, {}).pipe(tap(() => this.onLogOut()));
     }
 
     private onLogIn(result: LoginResult) {
