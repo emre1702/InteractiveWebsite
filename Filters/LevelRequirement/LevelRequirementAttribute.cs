@@ -4,7 +4,7 @@ using System;
 
 namespace InteractiveWebsite.Filters.LevelRequirement
 {
-    public class LevelRequirementAttribute : TypeFilterAttribute
+    public sealed class LevelRequirementAttribute : TypeFilterAttribute
     {
         public NavigationItem Navigation { get; }
         public string ClaimId { get; }
