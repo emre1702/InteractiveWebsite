@@ -1,6 +1,14 @@
 :host {
     display: block;
 
+    .checkbox-group {
+        padding: 1rem;
+
+        .mat-checkbox {
+            margin-right: 1rem;
+        }
+    }
+
     .table-container {
         overflow: auto;
 

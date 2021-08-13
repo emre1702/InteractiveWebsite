@@ -12,7 +12,9 @@ import { MembersTableService } from '../../services/members-table.service';
     styleUrls: ['./members-table.component.scss'],
 })
 export class MembersTableComponent implements AfterViewInit {
-    displayedColumns = ['NumberId', 'Name', 'Sex', 'Birthdate', 'Created', 'LastOnline', 'IsAdmin', 'Email', 'Postcode', 'City'];
+    readonly systemDataColumns = ['IsAdmin', 'Created', 'LastOnline'];
+    readonly locationDataColumns = ['Postcode', 'City'];
+    displayedColumns = ['NumberId', 'Name', 'Email', 'Sex', 'Birthdate', ...this.systemDataColumns, ...this.locationDataColumns];
     membersList: MemberData[] = [];
     isLoadingResults: boolean;
 
@@ -32,5 +34,29 @@ export class MembersTableComponent implements AfterViewInit {
                 finalize(() => (this.isLoadingResults = false)),
             )
             .subscribe((memberDatas) => (this.membersList = memberDatas));
+    }
+
+    toggleSystemData() {
+        this.toggleDatas(this.systemDataColumns);
+    }
+
+    toggleLocationData() {
+        this.toggleDatas(this.locationDataColumns);
+    }
+
+    private toggleDatas(columns: string[]) {
+        if (this.displayedColumns.indexOf(columns[0]) < 0) this.addColumns(columns);
+        else this.removeColumns(columns);
+    }
+
+    private addColumns(columns: string[]) {
+        for (const column of columns) this.displayedColumns.push(column);
+    }
+
+    private removeColumns(columns: string[]) {
+        for (const column of columns) {
+            const index = this.displayedColumns.indexOf(column);
+            if (index >= 0) this.displayedColumns.splice(index, 1);
+        }
     }
 }
