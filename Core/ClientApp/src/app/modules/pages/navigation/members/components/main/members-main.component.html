@@ -1,1 +1,7 @@
-<app-members-table></app-members-table>
+<div class="d-flex flex-row">
+    <app-members-table (selectedMemberChange)="selectedMember = $event" class="flex-grow-1"></app-members-table>
+    <div class="buttons-group flex-shrink-0 ms-3 d-flex flex-column">
+        <button mat-stroked-button [disabled]="!selectedMember" i18n>Datas</button>
+        <button mat-stroked-button [disabled]="!selectedMember" i18n>Permissions</button>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge } from 'rxjs';
@@ -12,11 +12,14 @@ import { MembersTableService } from '../../services/members-table.service';
     styleUrls: ['./members-table.component.scss'],
 })
 export class MembersTableComponent implements AfterViewInit {
+    @Output() selectedMemberChange = new EventEmitter<MemberData>();
+
     readonly systemDataColumns = ['IsAdmin', 'Created', 'LastOnline'];
     readonly locationDataColumns = ['Postcode', 'City'];
     displayedColumns = ['NumberId', 'Name', 'Email', 'Sex', 'Birthdate', ...this.systemDataColumns, ...this.locationDataColumns];
     membersList: MemberData[] = [];
     isLoadingResults: boolean;
+    selectedMember: MemberData;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
@@ -58,5 +61,11 @@ export class MembersTableComponent implements AfterViewInit {
             const index = this.displayedColumns.indexOf(column);
             if (index >= 0) this.displayedColumns.splice(index, 1);
         }
+    }
+
+    toggleSelectedMember(member: MemberData) {
+        if (this.selectedMember?.id === member.id) this.selectedMember = undefined;
+        else this.selectedMember = member;
+        this.selectedMemberChange.emit(this.selectedMember);
     }
 }
