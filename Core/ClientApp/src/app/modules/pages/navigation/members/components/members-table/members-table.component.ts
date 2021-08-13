@@ -12,7 +12,7 @@ import { MembersTableService } from '../../services/members-table.service';
     styleUrls: ['./members-table.component.scss'],
 })
 export class MembersTableComponent implements AfterViewInit {
-    displayedColumns = ['NumberId', 'Name', 'Sex', 'Birthdate', 'Created', 'LastOnline', 'Postcode', 'IsAdmin', 'Email'];
+    displayedColumns = ['NumberId', 'Name', 'Sex', 'Birthdate', 'Created', 'LastOnline', 'IsAdmin', 'Email', 'Postcode', 'City'];
     membersList: MemberData[] = [];
     isLoadingResults: boolean;
 

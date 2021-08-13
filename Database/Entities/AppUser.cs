@@ -17,6 +17,7 @@ namespace InteractiveWebsite.Database.Entities
         public DateTime Created { get; set; }
         public DateTime? LastOnline { get; set; }
         public int Postcode { get; set; }
+        public string City { get; set; }
         public bool IsAdmin { get; set; }
 
         public virtual IEnumerable<News> News { get; set; }
@@ -29,6 +30,11 @@ namespace InteractiveWebsite.Database.Entities
         public void Configure(EntityTypeBuilder<AppUser> builder)
         {
             builder.Property(e => e.NumberId).UseIdentityAlwaysColumn();
+
+            builder.Property(e => e.Name).HasMaxLength(100);
+            builder.Property(e => e.Surname).HasMaxLength(100);
+            builder.Property(e => e.Sex).HasMaxLength(100);
+            builder.Property(e => e.City).HasMaxLength(255);
 
             builder.Property(e => e.Birthdate)
                 .HasConversion(v => v, v => v.HasValue ? DateTime.SpecifyKind(v.Value, DateTimeKind.Utc) : null);
